@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -11,24 +10,61 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
+        debug {
+            applicationIdSuffix ".dev"
+            minifyEnabled false
+            useProguard false
+            debuggable true
+        }
+        pre {
+            applicationIdSuffix ".pre"
+            initWith debug
+            minifyEnabled false
+            useProguard false
+            debuggable true
+        }
         release {
             minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
+ext {
+    mockkVersion = '1.8.9'
+    junitVersion = '4.12'
+    espressoCoreVersion = '3.1.0'
+    runnerVersion = '1.1.0'
+    constraintlayoutVersion = '2.0.0-alpha2'
+    appcompatVersion = '1.0.2'
+    lifecycleExtensionsVersion = '2.0.0'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // MVVM
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
+
+    //Design
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+
+    //Testing
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "io.mockk:mockk:$mockkVersion"
+    androidTestImplementation "androidx.test:runner:$runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 }

@@ -1,16 +1,20 @@
-package com.blopez.kotlinmvvmjetpackkoin.ui.main
+package com.blopez.kotlinmvvmjetpackkoin.ui.home
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import com.blopez.kotlinmvvmjetpackkoin.common.base.BaseViewModel
 
-class MainViewModel : BaseViewModel() {
+class HomeViewModel : BaseViewModel() {
 
-    val title = MutableLiveData<String>()
+    val clicksCount = MutableLiveData<Int>()
+
+    fun onClickButton() {
+        clicksCount.value = clicksCount.value?.plus(1)
+    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onResume() {
-        title.value = "hola"
+        clicksCount.value = 0
     }
 }
