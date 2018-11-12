@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:startDestination="@+id/homeFragment"
+            android:id="@+id/nav_graph">
+
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.blopez.kotlinmvvmjetpackkoin.ui.home.HomeFragment"
+            android:label="Home Fragment"
+            tools:layout="@layout/home_fragment">
+    </fragment>
+
+    <!--To navigate between destinations, you use actions-->
+    <!--<action-->
+    <!--android:id="@+id/actionNextFragment"-->
+    <!--app:destination="@id/nextFragment"-->
+    <!--app:enterAnim="@anim/slide_in_right"-->
+    <!--app:exitAnim="@anim/slide_out_left"-->
+    <!--app:popEnterAnim="@anim/slide_in_left"-->
+    <!--app:popExitAnim="@anim/slide_out_right"-->
+    <!--/>-->
+
+</navigation>

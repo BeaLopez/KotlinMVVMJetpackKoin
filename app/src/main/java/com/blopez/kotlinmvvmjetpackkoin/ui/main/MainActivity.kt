@@ -3,6 +3,7 @@ package com.blopez.kotlinmvvmjetpackkoin.ui.main
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.blopez.kotlinmvvmjetpackkoin.BR
 import com.blopez.kotlinmvvmjetpackkoin.R
 import com.blopez.kotlinmvvmjetpackkoin.common.base.BaseActivity
@@ -17,14 +18,8 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
         ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, HomeFragment.newInstance())
-                .commitNow()
-        }
-    }
+    override fun onSupportNavigateUp() = Navigation.findNavController(this, R.id.navHostFragment).navigateUp()
+
 
     override fun getViewModel(): MainViewModel {
         return mViewModel

@@ -25,6 +25,9 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
         return mViewDataBinding
     }
 
+    //To ensure the Back button works properly
+    abstract override fun onSupportNavigateUp(): Boolean
+
     abstract fun getViewModel(): V
     abstract fun getLayoutId(): Int
     abstract fun getBindingVariable(): Int

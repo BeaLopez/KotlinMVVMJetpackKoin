@@ -48,6 +48,8 @@ ext {
     constraintlayoutVersion = '2.0.0-alpha2'
     appcompatVersion = '1.0.2'
     lifecycleExtensionsVersion = '2.0.0'
+    navigationFragmentKtxVersion = '1.0.0-alpha07'
+    navigationUiKtxVersion = '1.0.0-alpha07'
 }
 
 dependencies {
@@ -57,11 +59,15 @@ dependencies {
     // MVVM
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
 
-    //Design
+    // Navigation component
+    implementation "android.arch.navigation:navigation-fragment-ktx:$navigationFragmentKtxVersion"
+    implementation "android.arch.navigation:navigation-ui-ktx:$navigationUiKtxVersion"
+
+    // Design
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 
-    //Testing
+    // Testing
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
     testImplementation "junit:junit:$junitVersion"
     testImplementation "io.mockk:mockk:$mockkVersion"
