@@ -50,18 +50,23 @@ ext {
     lifecycleExtensionsVersion = '2.0.0'
     navigationFragmentKtxVersion = '1.0.0-alpha07'
     navigationUiKtxVersion = '1.0.0-alpha07'
+    koinVersion = '1.0.1'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // MVVM
+    // MVVM architecture
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
 
     // Navigation component
     implementation "android.arch.navigation:navigation-fragment-ktx:$navigationFragmentKtxVersion"
     implementation "android.arch.navigation:navigation-ui-ktx:$navigationUiKtxVersion"
+
+    // Koin, dependency injection framework
+    implementation "org.koin:koin-androidx-scope:$koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
 
     // Design
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
